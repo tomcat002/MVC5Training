@@ -1,0 +1,11 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+
+@{
+    ViewBag.Title = "Error Test";
+}
+
+<h1 class="text-danger">Error TEST.</h1>
+<h2 class="text-danger">An TEST error occurred while processing your request.</h2>
+<h2 class="text-danger">ExceptionMessage: @Model.Exception.Message</h2>
+<h2 class="text-danger">Action Name :  @Model.ActionName</h2>
+

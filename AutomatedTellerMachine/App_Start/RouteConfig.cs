@@ -13,11 +13,21 @@ namespace AutomatedTellerMachine
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            //This line enables RouteAttribute
+            routes.MapMvcAttributeRoutes();
+
+            routes.MapRoute(
+                name: "Serial Number",
+                url: "Serial/{letterCase}",
+                defaults: new { controller = "Home", action = "serial", letterCase = "upper" }
+            );
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
         }
     }
 }
