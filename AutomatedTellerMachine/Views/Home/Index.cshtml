@@ -31,3 +31,22 @@
 </div>
 
 You are using @Request.Browser.Browser, and that's OK! Email us at support@mvcatm.com if you have any problems. Or send us a tweet @@mvcatm.
+
+@{
+    var amounts = new List<Decimal> { 100, 25.50m, -40, 275.99m };}
+@{
+    @foreach (var amount in amounts)
+    {
+    }
+
+}
+
+@helper formatAmount(decimal amount)
+{
+var color = "green";
+if (amount > 100m)
+{
+    color = "red";
+}
+    <p style="background-color:@color">@String.Format("{0:c}", amount}</p>
+}

@@ -16,7 +16,7 @@ namespace AutomatedTellerMachine.Controllers
         [OutputCache(Duration = 60)]
         public ActionResult Index()
         {
-            throw new OverflowException();
+            //throw new OverflowException();
             return View();
         }
         [ActionName("About")]
