@@ -17,5 +17,9 @@ namespace AutomatedTellerMachine
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
+
+        protected void Application_AuthenticateRequest()
+        {
+        }
     }
 }

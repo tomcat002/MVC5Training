@@ -42,22 +42,26 @@ namespace AutomatedTellerMachine.Controllers
 
             return View();
         }
-        [Route("home/ss")]
+
         public ActionResult Serial(string letterCase)
         {
-            var l = HttpUtility.ParseQueryString(Request.Url.Query);
-            if (string.IsNullOrEmpty(letterCase))
-            {
-                letterCase = l["lowercase"];
-            }
+            //var l = HttpUtility.ParseQueryString(Request.Url.Query);
+            //if (string.IsNullOrEmpty(letterCase))
+            //{
+            //    letterCase = l["lowercase"];
+            //}
             var serial = "ASPNETMVC5ATM1";
             if (letterCase == "lower")
             {
-                return Json(new { name = "Test", Value = serial.ToLower() }, JsonRequestBehavior.AllowGet);
+                return Content(serial);
             }
-            return Json(new { name = "Test", Value = serial }, JsonRequestBehavior.AllowGet);
+            //if (letterCase == "lower")
+            //{
+            //    return Json(new { name = "Test", Value = serial.ToLower() }, JsonRequestBehavior.AllowGet);
+            //}
+            //return Json(new { name = "Test", Value = serial }, JsonRequestBehavior.AllowGet);
 
-            //return Redirect("Contact");
+            return RedirectToAction("Index");
         }
     }
 }
