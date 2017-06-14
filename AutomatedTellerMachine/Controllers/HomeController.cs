@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AutomatedTellerMachine.Models;
+using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,14 +11,18 @@ namespace AutomatedTellerMachine.Controllers
     [MyLogginFilter]
     public class HomeController : Controller
     {
+        private ApplicationDbContext db = new ApplicationDbContext();
         // GET /home/index
         [MyLogginFilter]
         [HandleError(View = "Error")]
         [HandleError(View = "ErrorTest", ExceptionType = typeof(OverflowException))]
         [OutputCache(Duration = 60)]
+        [Authorize]
         public ActionResult Index()
         {
-            //throw new OverflowException();
+            var userId = User.Identity.GetUserId();
+            var checkingAccountId = db.CheckingAccounts.Where(c=>c.ApplicationUserId == userId).First().Id;
+            ViewBag.CheckingAccountId = checkingAccountId;
             return View();
         }
         [ActionName("About")]
