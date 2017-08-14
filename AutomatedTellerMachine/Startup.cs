@@ -8,7 +8,7 @@ namespace AutomatedTellerMachine
     {
         public void Configuration(IAppBuilder app)
         {   
-            
+            //test 0814
             
             
             ConfigureAuth(app);
